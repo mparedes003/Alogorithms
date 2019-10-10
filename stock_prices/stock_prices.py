@@ -6,13 +6,13 @@ p = [1050, 270, 1540, 3800, 2]
 
 
 def find_max_profit(prices):
-    max_profit = 0
+    max_profit = prices[1] - prices[0]
 
-    for i, left_side_num in prices:
-        for right_side_num in prices[i + 1:]:
-            profit = right_side_num - left_side_num
+    for left_side_num in range(len(prices) - 1):
+        for right_side_num in range(left_side_num + 1, len(prices)):
+            profit = prices[right_side_num] - prices[left_side_num]
 
-            if max_profit == 0 or profit > max_profit:
+            if profit > max_profit:
                 max_profit = profit
     return max_profit
 
